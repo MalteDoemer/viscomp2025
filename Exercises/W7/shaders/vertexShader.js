@@ -1,6 +1,7 @@
 export default `
   attribute vec4 aVertexPosition;
   attribute vec3 aVertexNormal;
+  attribute vec3 aBaubleColor;
 
   uniform mat4 uModelViewMatrix;
   uniform mat4 uProjectionMatrix;
@@ -25,7 +26,8 @@ export default `
 
     float diffuseIntensity = computeDiffuseIntens(aVertexPosition.xyz, aVertexNormal, lightPos.xyz);
     float ambientIntensity = 0.8; // some value between 0.0 and 1.0
-    vColor = vec4(0.3, 0.3, 0.3, 1.0) * (diffuseIntensity + ambientIntensity) / 2.0;
+    //vColor = vec4(0.3, 0.3, 0.3, 1.0) * (diffuseIntensity + ambientIntensity) / 2.0;
+    vColor = vec4(aBaubleColor.xyz, 1.0) * (diffuseIntensity + ambientIntensity) / 2.0;
     vColor[3] = 1.0;
   }
   `;
